@@ -12,33 +12,50 @@ De todos ellos se desea conocer su nombre, dirección, teléfono, población, pr
 De todos, médicos y empleados, se mantiene también información sobre los períodos de vacaciones que tienen planificados y de los que ya han disfrutado. 
 Por último, de los pacientes se conoce su nombre, dirección, teléfono, código postal, NIF, número de la seguridad social y médico que les corresponde.
 
+Claro, aquí tienes la estructura de las tablas con la tabla inicial **Persona**, que se relaciona con **Pacientes**, **Empleados**, y **Medicos**.
 
+1. **Tabla Persona**:
+   - **id_persona** (PK): `INT`
+   - **nombre**: `VARCHAR(100)`
+   - **direccion**: `VARCHAR(255)`
+   - **telefono**: `VARCHAR(15)`
+   - **poblacion**: `VARCHAR(100)`
+   - **provincia**: `VARCHAR(100)`
+   - **codigo_postal**: `VARCHAR(10)`
+   - **NIF**: `VARCHAR(20)`
+   - **numero_seguridad_social**: `VARCHAR(20)`
 
-1. **Tabla Médicos**:
-   - **id_medico** (PK): Identificador único del médico.
-   - nombre, dirección, teléfono, población, provincia, código postal, NIF, número de la seguridad social, número de colegiado, tipo (titular, interino, sustituto).
+2. **Tabla Médicos**:
+   - **id_medico** (PK): `INT`
+   - **id_persona** (FK): `INT`
+   - **numero_colegiado**: `VARCHAR(20)`
+   - **tipo**: `ENUM('titular', 'interino', 'sustituto')`
 
-2. **Tabla Horarios**:
-   - **id_horario** (PK): Identificador único del horario.
-   - id_medico (FK): Referencia al médico al que pertenece este horario.
-   - día_semana, hora_inicio, hora_fin.
+3. **Tabla Horarios**:
+   - **id_horario** (PK): `INT`
+   - **id_medico** (FK): `INT`
+   - **dia_semana**: `ENUM('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo')`
+   - **hora_inicio**: `TIME`
+   - **hora_fin**: `TIME`
 
-3. **Tabla Sustituciones**:
-   - **id_sustitucion** (PK): Identificador único de la sustitución.
-   - id_medico_sustituto (FK): Referencia al médico sustituto.
-   - fecha_alta, fecha_baja.
+4. **Tabla Sustituciones**:
+   - **id_sustitucion** (PK): `INT`
+   - **id_medico_sustituto** (FK): `INT`
+   - **fecha_alta**: `DATE`
+   - **fecha_baja**: `DATE`
 
-4. **Tabla Empleados**:
-   - **id_empleado** (PK): Identificador único del empleado.
-   - nombre, dirección, teléfono, población, provincia, código postal, NIF, número de la seguridad social, tipo_empleado (ATS, ATS de zona, auxiliar de enfermería, celador, administrativo).
+5. **Tabla Empleados**:
+   - **id_empleado** (PK): `INT`
+   - **id_persona** (FK): `INT`
+   - **tipo_empleado**: `ENUM('ATS', 'ATS de zona', 'auxiliar de enfermería', 'celador', 'administrativo')`
 
-5. **Tabla Vacaciones**:
-   - **id_vacaciones** (PK): Identificador único del periodo de vacaciones.
-   - id_empleado (FK): Referencia al empleado que tiene el periodo de vacaciones.
-   - fecha_inicio, fecha_fin.
+6. **Tabla Vacaciones**:
+   - **id_vacaciones** (PK): `INT`
+   - **id_empleado** (FK): `INT`
+   - **fecha_inicio**: `DATE`
+   - **fecha_fin**: `DATE`
 
-6. **Tabla Pacientes**:
-   - **id_paciente** (PK): Identificador único del paciente.
-   - nombre, dirección, teléfono, código postal, NIF, número de la seguridad social.
-   - id_medico_asignado (FK): Referencia al médico que le corresponde.
-Estos identificadores ayudan a establecer las relaciones entre las entidades de la base de datos de manera más clara. Cada tabla tiene un identificador único (PK) y las relaciones se definen con claves externas (FK) donde sea necesario para conectar la información relacionada entre tablas.
+7. **Tabla Pacientes**:
+   - **id_paciente** (PK): `INT`
+   - **id_persona** (FK): `INT`
+   - **id_medico_asignado** (FK): `INT`
