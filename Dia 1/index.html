@@ -1,0 +1,44 @@
+Se desea diseñar una base de datos para guardar la información sobre médicos, empleados y pacientes de un centro de salud. 
+De los médicos se desea saber su 
+nombre, dirección, teléfono, población, provincia, código postal, NIF, número de la seguridad social, número de colegiado y si es médico titular, médico interino o médico sustituto. 
+Cada médico tiene un horario en el que pasa consulta, pudiendo ser diferente cada día de la semana. 
+
+
+Los datos de los médicos sustitutos no desaparecen cuando finalizan una sustitución, se les da una fecha de baja. 
+Así, cada sustituto puede tener varias fechas de alta y fechas de baja, dependiendo de las sustituciones que haya realizado. 
+Si la última fecha de alta es posterior a la última fecha de baja, el médico está realizando una sustitución en la actualidad en el centro de salud. 
+El resto de empleados son los ATS, ATS de zona, auxiliares de enfermería, celadores y administrativos. 
+De todos ellos se desea conocer su nombre, dirección, teléfono, población, provincia, código postal, NIF y número de la seguridad social. 
+De todos, médicos y empleados, se mantiene también información sobre los períodos de vacaciones que tienen planificados y de los que ya han disfrutado. 
+Por último, de los pacientes se conoce su nombre, dirección, teléfono, código postal, NIF, número de la seguridad social y médico que les corresponde.
+
+
+
+1. **Tabla Médicos**:
+   - **id_medico** (PK): Identificador único del médico.
+   - nombre, dirección, teléfono, población, provincia, código postal, NIF, número de la seguridad social, número de colegiado, tipo (titular, interino, sustituto).
+
+2. **Tabla Horarios**:
+   - **id_horario** (PK): Identificador único del horario.
+   - id_medico (FK): Referencia al médico al que pertenece este horario.
+   - día_semana, hora_inicio, hora_fin.
+
+3. **Tabla Sustituciones**:
+   - **id_sustitucion** (PK): Identificador único de la sustitución.
+   - id_medico_sustituto (FK): Referencia al médico sustituto.
+   - fecha_alta, fecha_baja.
+
+4. **Tabla Empleados**:
+   - **id_empleado** (PK): Identificador único del empleado.
+   - nombre, dirección, teléfono, población, provincia, código postal, NIF, número de la seguridad social, tipo_empleado (ATS, ATS de zona, auxiliar de enfermería, celador, administrativo).
+
+5. **Tabla Vacaciones**:
+   - **id_vacaciones** (PK): Identificador único del periodo de vacaciones.
+   - id_empleado (FK): Referencia al empleado que tiene el periodo de vacaciones.
+   - fecha_inicio, fecha_fin.
+
+6. **Tabla Pacientes**:
+   - **id_paciente** (PK): Identificador único del paciente.
+   - nombre, dirección, teléfono, código postal, NIF, número de la seguridad social.
+   - id_medico_asignado (FK): Referencia al médico que le corresponde.
+Estos identificadores ayudan a establecer las relaciones entre las entidades de la base de datos de manera más clara. Cada tabla tiene un identificador único (PK) y las relaciones se definen con claves externas (FK) donde sea necesario para conectar la información relacionada entre tablas.
