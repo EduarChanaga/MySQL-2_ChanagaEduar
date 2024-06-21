@@ -1,5 +1,6 @@
 -- ##################################
--- ###### llamar funciones ##########
+-- ####### llamar funciones #########
+-- ######### sobre una tabla ########
 -- ##################################
 
 -- Función para listar el primer apellido de todos los empleados
