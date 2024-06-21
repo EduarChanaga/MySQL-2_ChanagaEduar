@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio de Funciones y Procedimientos en SQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        code.sql {
+            display: block;
+            background-color: #f7f7f7;
+            border-left: 5px solid #007bff;
+            padding: 1rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        code.keyword {
+            color: #dc3545;
+        }
+
+        code.procedure {
+            color: #28a745;
+        }
+
+        code.variable {
+            color: #ffc107;
+        }
+
+        code.documentation {
+            color: #6c757d;
+        }
+
+        code.comment {
+            color: #28a745;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Estudio de Funciones y Procedimientos en SQL</h1>
+    </header>
+    <main>
+        <!-- Sección de Funciones en SQL -->
+        <section>
+            <h2>Funciones en SQL</h2>
+            <p>Las funciones en SQL son bloques de código que aceptan argumentos, realizan cálculos o procesamiento de datos y devuelven un resultado.</p>
+            <!-- Ejemplo de Función -->
+            <h3>Ejemplo de Función</h3>
+            <code class="sql">
+                <code class="comment">-- Función para obtener el nombre completo de un empleado</code> <br>
+                CREATE FUNCTION obtener_nombre_completo() <br>
+                RETURNS TEXT <br>
+                <code class="keyword">DETERMINISTIC</code> <br>
+                <code class="keyword">BEGIN</code> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; DECLARE <code class="variable">nombre_completo</code> TEXT; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; SELECT CONCAT(nombre, ' ', apellido) INTO <code class="variable">nombre_completo</code> FROM empleado; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; RETURN <code class="variable">nombre_completo</code>; <br>
+                <code class="keyword">END</code> //
+            </code>
+            <p>Esta función obtiene el nombre completo de un empleado concatenando su nombre y apellido.</p>
+        </section>
+        <!-- Sección de Procedimientos en SQL -->
+        <section>
+            <h2>Procedimientos en SQL</h2>
+            <p>Los procedimientos en SQL son bloques de código que ejecutan una serie de instrucciones o consultas de manera secuencial.</p>
+            <!-- Ejemplo de Procedimiento -->
+            <h3>Ejemplo de Procedimiento</h3>
+            <code class="sql">
+                <code class="comment">-- Procedimiento para listar todos los empleados</code> <br>
+                CREATE PROCEDURE listar_empleados() <br>
+                <code class="keyword">BEGIN</code> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; SELECT * <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; FROM empleado; <br>
+                <code class="keyword">END</code> //
+            </code>
+            <p>Este procedimiento lista todos los datos de los empleados en la tabla 'empleado'.</p>
+        </section>
+        <!-- Sección de Ejemplos Prácticos -->
+        <section>
+            <h2>Ejemplos Prácticos</h2>
+            <p>A continuación, se presentan ejemplos prácticos de funciones y procedimientos en SQL utilizando una base de datos de productos.</p>
+            <!-- Bloque de Código SQL para la creación de la base de datos y tablas -->
+            <h3>Creación de la Base de Datos y Tablas</h3>
+            <code class="sql">
+                <code class="comment">-- Creación de la base de datos y la tabla de productos</code> <br>
+                CREATE DATABASE <code class="variable">mysql2_dia2</code>; <br>
+                USE <code class="variable">mysql2_dia2</code>; <br>
+                CREATE TABLE <code class="variable">productos</code>( <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; id INT AUTO_INCREMENT, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; nombre VARCHAR(100), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; precio DECIMAL(10,2), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; PRIMARY KEY(id) <br>
+                ); <br>
+            </code>
+            <!-- Otros ejemplos de código SQL -->
+            <h3>Otros Ejemplos de Código SQL</h3>
+            <code class="sql">
+                <code class="comment">-- Función para obtener el precio de un producto dado su nombre</code> <br>
+                CREATE FUNCTION obtener_precio_producto(nombre_producto VARCHAR(100)) <br>
+                RETURNS DECIMAL (10,2) <br>
+                <code class="keyword">DETERMINISTIC</code> <br>
+                <code class="keyword">BEGIN</code> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; DECLARE <code class="variable">precio_producto</code> DECIMAL(10,2); <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; SELECT precio INTO <code class="variable">precio_producto</code> FROM productos <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; WHERE nombre = nombre_producto; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; RETURN <code class="variable">precio_producto</code>; <br>
+                <code class="keyword">END</code> // <br>
+                <code class="comment"> -- Uso de la función</code> <br>
+                SELECT obtener_precio_producto('Pepito') as Precio; <br>
+                <code class="comment">>-- Procedimiento para eliminar un producto dado su nombre</code> <br>
+                CREATE PROCEDURE eliminar_producto (IN nombre_producto VARCHAR(100)) <br>
+                <code class="keyword">BEGIN</code> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp; DELETE FROM productos WHERE nombre = nombre_producto; <br>
+                <code class="keyword">END</code> // <br>
+                <code class="keyword"> -- Llamada al procedimiento</code> <br>
+                CALL eliminar_producto('Gorra'); <br>
+            </code>
+            <p>Estos son ejemplos prácticos que muestran cómo utilizar funciones y procedimientos en SQL para manipular datos en una base de datos de productos.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 - Estudio de Funciones y Procedimientos en SQL</p>
+    </footer>
+</body>
+
+</html>
