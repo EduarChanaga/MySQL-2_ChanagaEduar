@@ -21,7 +21,8 @@ INSERT INTO Empleado (sucursal_id, cedula, nombres, apellidos, direccion, ciudad
 (2, '8007890123', 'Carlos', 'Fernández', 'Carrera 16 #21-31', 'Medellín', '3178901234', 'carlos.fernandez@empresa.com'),
 (3, '8008901234', 'Diana', 'Torres', 'Avenida 11 #6-11', 'Cali', '3189012345', 'diana.torres@empresa.com'),
 (4, '8009012345', 'Fernando', 'García', 'Calle 51 #31-41', 'Barranquilla', '3190123456', 'fernando.garcia@empresa.com'),
-(5, '8010123456', 'Sandra', 'Jiménez', 'Carrera 21 #16-26', 'Cartagena', '3201234567', 'sandra.jimenez@empresa.com');
+(5, '8010123456', 'Sandra', 'Jiménez', 'Carrera 21 #16-26', 'Cartagena', '3201234567', 'sandra.jimenez@empresa.com'),
+(1, '1095581647', 'Eduar', 'Chanaga', 'Carrera 21 #57-26', 'bucaramanga', '3133950318', 'chanaga250@gmail.com');
 
 -- Insertando datos en la tabla Cliente
 INSERT INTO Cliente (cedula, nombres, apellidos, direccion, ciudad_residencia, celular, correo_electronico) VALUES
@@ -62,4 +63,5 @@ INSERT INTO Alquiler (vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, 
 (9, 9, 9, 4, '2024-06-28', 5, '2024-07-05', '2024-07-05', 450.00, 80.00, 25.00, 600.00, 550.00),
 (10, 10, 10, 5, '2024-06-29', 3, '2024-07-06', '2024-07-06', 500.00, 90.00, 30.00, 650.00, 600.00);
 
+select * from Alquiler;
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647

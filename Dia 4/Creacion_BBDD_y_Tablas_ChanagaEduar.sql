@@ -1,8 +1,10 @@
 -- ########################################
 -- ###### Creacion de tablas y BBDD #######
 -- ########################################
+
+select * from Empleado;
 -- creacion de base de datos
-create database Alquiler;
+create database alquiler;
 use alquiler;
 -- creacion de la tabla sucursal
 CREATE TABLE sucursal (
