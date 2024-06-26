@@ -74,4 +74,15 @@ call Agregar_Alquiler_nuevo(
             'carlos.lopez@cliente.com'	-- Correo Cliente
             );
 
-select * from cliente_log;
+-- ######################################## modificar cliente  ########################################  
+-- Llamar procedimiento con sus respectivos parametros
+CALL modificar_cliente(
+    1,  -- cliente_id
+    'pedro', -- nuevo_nombres
+    'Pérez', -- nuevo_apellidos
+    'Avenida Principal 123', -- nueva_direccion
+    'Medellín', -- nueva_ciudad_residencia
+    '3009876543', -- nuevo_celular
+    'juan.perez@example.com' -- nuevo_correo_electronico
+);
+

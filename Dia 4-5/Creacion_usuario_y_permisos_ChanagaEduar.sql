@@ -28,6 +28,7 @@ GRANT EXECUTE ON PROCEDURE alquiler.ver_registros_alquiler TO 'empleado'@'%';
 GRANT EXECUTE ON PROCEDURE alquiler.Consultar_disponibilidad_vehiculos TO 'empleado'@'%';
 grant execute on procedure alquiler.Agregar_Alquiler_nuevo TO 'empleado'@'%';
 grant execute on procedure alquiler.agregar_cliente TO 'empleado'@'%';
+grant execute on procedure alquiler.modificar_cliente TO 'empleado'@'%';
 
 
 -- creacion de usuario cliente

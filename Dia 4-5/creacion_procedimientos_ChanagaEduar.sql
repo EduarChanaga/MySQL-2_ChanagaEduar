@@ -133,5 +133,31 @@ END //
 
 
 DELIMITER ;
+-- Editar cliente
+DELIMITER //
+
+CREATE PROCEDURE modificar_cliente(
+    IN cliente_id INT,
+    IN nuevo_nombres VARCHAR(50),
+    IN nuevo_apellidos VARCHAR(50),
+    IN nueva_direccion VARCHAR(100),
+    IN nueva_ciudad_residencia VARCHAR(50),
+    IN nuevo_celular VARCHAR(15),
+    IN nuevo_correo_electronico VARCHAR(50)
+)
+BEGIN
+    UPDATE Cliente
+    SET
+        nombres = nuevo_nombres,
+        apellidos = nuevo_apellidos,
+        direccion = nueva_direccion,
+        ciudad_residencia = nueva_ciudad_residencia,
+        celular = nuevo_celular,
+        correo_electronico = nuevo_correo_electronico
+    WHERE id = cliente_id;
+END //
+
+DELIMITER ;
+
 
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647
