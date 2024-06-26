@@ -4,10 +4,9 @@
 -- ########################################
 
 
--- ########################################
--- Modificar datos de la tabla alquiler
--- Asignar permiso al empleado para ejecutar este procedimiento
-			GRANT EXECUTE ON PROCEDURE alquiler.modificar_alquiler TO 'empleado'@'%';
+-- ######################################## Modificar datos de la tabla alquiler ########################################
+ 
+
 			-- Llamar procedimiento segun los datos a modificar
 			CALL modificar_alquiler(
 				10,       -- vehiculo_id
@@ -21,20 +20,19 @@
 				400.00,  -- valor_alquiler_semana
 				50.00,   -- valor_alquiler_dia
 				10.00,   -- porcentaje_descuento
-				120.00,  -- valor_pagado
-				10        -- id de registro a modificar
+				150.00,  -- valor_pagado
+				1        -- id de registro a modificar
 			);
--- ########################################
--- Ver registros de Alquiler
--- Asignar permiso al empleado para ejecutar este procedimiento
-			GRANT EXECUTE ON PROCEDURE alquiler.ver_registros_alquiler TO 'empleado'@'%';
+            
+
+-- ######################################## Ver registros de Alquiler ########################################
+
+			
             -- llamar procedimiento para ver el registro guardado en alquiler
             call ver_registros_alquiler();
             
--- ########################################            
--- Disponibilidad vehiculo
--- asignar permiso al empleado para ejecutar este procedimiento
-GRANT EXECUTE ON PROCEDURE alquiler.Consultar_disponibilidad_vehiculos TO 'empleado'@'%';
+-- ######################################## Disponibilidad vehiculo ########################################       
+
 CALL Consultar_disponibilidad_vehiculos(
     'Sedán',-- Tipo de vehículo que se desea buscar
     300,   -- minimo a pagar
@@ -43,13 +41,8 @@ CALL Consultar_disponibilidad_vehiculos(
     '2024-06-27' -- fecha inicio
 );
       
-    
-select * from Alquiler;
-select * from Vehiculo;
--- ########################################            
--- Agregar alquiler nuevo
--- asignar permiso al empleado para ejecutar este procedimiento
-grant execute on procedure alquiler.Agregar_Alquiler_nuevo TO 'empleado'@'%';
+
+-- ######################################## Agregar alquiler nuevo ########################################            
 
 -- Llamar procedimiento con sus respectivos parametros
 call Agregar_Alquiler_nuevo(
@@ -66,5 +59,19 @@ call Agregar_Alquiler_nuevo(
 0, -- porcentaje de descuento
 0, -- valor cotizado
 0  -- valor pagado
-)
+);
 
+-- ######################################## Agregar cliente nuevo ########################################    
+
+			-- Llamar procedimiento con sus respectivos parametros
+			CALL agregar_cliente(
+            '9001234567',  				-- cedula cliente
+            'Carlos',					-- Nombre cliente
+            'López',					-- Apellido cliente 
+            'Calle 45 #67-89',			-- Direccion cliente
+            'Bogotá',					-- Ciudad cliente
+			'3201234567', 				-- Numero celular cliente
+            'carlos.lopez@cliente.com'	-- Correo Cliente
+            );
+
+select * from cliente_log;

@@ -75,4 +75,27 @@ CREATE TABLE Alquiler (
 );
 
 
+-- creacion de tabla para llevar el registro de las modificaciones echas en la tabla alquiler
+
+CREATE TABLE Alquiler_Log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alquiler_id INT,
+    fecha_modificacion TIMESTAMP,
+    tipo_accion VARCHAR(10), -- Puede ser 'INSERT', 'UPDATE' o 'DELETE'
+    FOREIGN KEY (alquiler_id) REFERENCES Alquiler(id)
+);
+
+
+-- creacion de tabla para llevar el registro de las modificaciones echas en la tabla cliente
+
+CREATE TABLE Cliente_Log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
+    nombre_cliente VARCHAR(100),
+    tipo_accion VARCHAR(10), -- Puede ser 'INSERT', 'UPDATE' o 'DELETE'
+    fecha_modificacion TIMESTAMP
+);
+
+
+
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647

@@ -95,6 +95,43 @@ begin
 	INSERT INTO Alquiler (vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, fecha_salida, sucursal_llegada_id, fecha_llegada, fecha_esperada_llegada, valor_alquiler_semana, valor_alquiler_dia, porcentaje_descuento, valor_cotizado, valor_pagado) VALUES
 	(vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, fecha_salida, sucursal_llegada_id, fecha_llegada, fecha_esperada_llegada, valor_alquiler_semana, valor_alquiler_dia, porcentaje_descuento, valor_cotizado, valor_pagado);
 end //
-drop procedure Consultar_disponibilidad_vehiculos;
+
+
+
+
+-- ver vehiculos no alquilados
+
+CREATE PROCEDURE VerVehiculosDisponiblesPorTipo(IN tipo_vehiculo_param VARCHAR(50))
+BEGIN
+    SELECT v.*
+    FROM Vehiculo v
+    LEFT JOIN Alquiler a ON v.id = a.vehiculo_id
+    WHERE a.vehiculo_id IS NULL
+    AND v.tipo_vehiculo = tipo_vehiculo_param;
+END //
+
+
+
+-- Agregar cliente nuevo
+CREATE PROCEDURE agregar_cliente(
+    IN p_cedula VARCHAR(20),
+    IN p_nombres VARCHAR(50),
+    IN p_apellidos VARCHAR(50),
+    IN p_direccion VARCHAR(100),
+    IN p_ciudad_residencia VARCHAR(50),
+    IN p_celular VARCHAR(15),
+    IN p_correo_electronico VARCHAR(50)
+)
+BEGIN
+    -- Variable para guardar el ID del nuevo cliente
+    DECLARE cliente_id INT;
+
+    -- Insertar el cliente en la tabla Cliente
+    INSERT INTO Cliente (cedula, nombres, apellidos, direccion, ciudad_residencia, celular, correo_electronico)
+    VALUES (p_cedula, p_nombres, p_apellidos, p_direccion, p_ciudad_residencia, p_celular, p_correo_electronico);
+END //
+
+
+DELIMITER ;
 
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647
