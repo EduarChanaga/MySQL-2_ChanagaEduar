@@ -46,3 +46,25 @@ CALL Consultar_disponibilidad_vehiculos(
     
 select * from Alquiler;
 select * from Vehiculo;
+-- ########################################            
+-- Agregar alquiler nuevo
+-- asignar permiso al empleado para ejecutar este procedimiento
+grant execute on procedure alquiler.Agregar_Alquiler_nuevo TO 'empleado'@'%';
+
+-- Llamar procedimiento con sus respectivos parametros
+call Agregar_Alquiler_nuevo(
+0,   -- id del vehiculo para el alquiler
+0,   -- id del cliente para el alquiler
+0, -- id del empleado para el alquiler
+0, -- id de la sucursal de la salida
+'2024-06-29',  -- fecha de la salida
+0,-- id de la sucursal de la llegada
+'2024-07-01', -- fecha de la llegada
+'2024-07-02', -- fecha esperada de la llegada
+0, -- valor del alquiler de la semana
+0, -- valor del alquiler al dia 
+0, -- porcentaje de descuento
+0, -- valor cotizado
+0  -- valor pagado
+)
+

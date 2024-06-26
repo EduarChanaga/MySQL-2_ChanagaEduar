@@ -2,7 +2,6 @@
 -- ###### Creacion de tablas y BBDD #######
 -- ########################################
 
-select * from Empleado;
 -- creacion de base de datos
 create database alquiler;
 use alquiler;

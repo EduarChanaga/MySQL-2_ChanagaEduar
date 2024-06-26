@@ -63,5 +63,5 @@ INSERT INTO Alquiler (vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, 
 (9, 9, 9, 4, '2024-06-28', 5, '2024-07-05', '2024-07-05', 450.00, 80.00, 25.00, 600.00, 550.00),
 (10, 10, 10, 5, '2024-06-29', 3, '2024-07-06', '2024-07-06', 500.00, 90.00, 30.00, 650.00, 600.00);
 
-select * from Alquiler;
+
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647

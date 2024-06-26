@@ -1,5 +1,6 @@
 -- ########################################
 -- ###### Creacion de procedimientos ######
+-- ############### Empleados ##############
 -- ########################################
 use alquiler;
 DELIMITER //
@@ -85,11 +86,14 @@ in sucursal_llegada_id int,
 in fecha_llegada date,
 in fecha_esperada_llegada date,
 in valor_alquiler_semana DECIMAL(10,2),
-in valor_alquiler_dia decimal(10,2)
+in valor_alquiler_dia decimal(10,2),
+in porcentaje_descuento decimal(5,2),
+in valor_cotizado decimal (10,2),
+in valor_pagado decimal (10,2)
 )
 begin
 	INSERT INTO Alquiler (vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, fecha_salida, sucursal_llegada_id, fecha_llegada, fecha_esperada_llegada, valor_alquiler_semana, valor_alquiler_dia, porcentaje_descuento, valor_cotizado, valor_pagado) VALUES
-	(1, 1, 1, 1, '2024-06-20', 2, '2024-06-27', '2024-06-27', 300.00, 50.00, 10.00, 450.00, 400.00);
+	(vehiculo_id, cliente_id, empleado_id, sucursal_salida_id, fecha_salida, sucursal_llegada_id, fecha_llegada, fecha_esperada_llegada, valor_alquiler_semana, valor_alquiler_dia, porcentaje_descuento, valor_cotizado, valor_pagado);
 end //
 drop procedure Consultar_disponibilidad_vehiculos;
 
