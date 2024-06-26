@@ -19,4 +19,5 @@ GRANT INSERT ON alquiler.alquiler to 'empleado'@'%';
 FLUSH PRIVILEGES;
 
 
+
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647
