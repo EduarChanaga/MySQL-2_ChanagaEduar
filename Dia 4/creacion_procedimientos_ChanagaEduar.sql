@@ -157,7 +157,28 @@ BEGIN
     WHERE id = cliente_id;
 END //
 
+
+DELIMITER //
+-- Procedimiento para el evento que crea un backup de la tabla alquiler 
+DELIMITER //
+CREATE PROCEDURE sp_backup_alquiler()
+BEGIN
+    DECLARE backup_filename VARCHAR(255);
+    SET backup_filename = CONCAT('alquiler_backup_', DATE_FORMAT(NOW(), '%Y%m%d%H%i%s'), '.sql');
+    SET @backup_query = CONCAT('mysqldump -u your_username -pYourPassword your_database Alquiler > ', backup_filename);
+    CALL sys_exec(@backup_query);
+END //
+
+drop procedure sp_backup_alquiler;
 DELIMITER ;
+
+
+DELIMITER ;
+
+
+
+
+
 
 
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647

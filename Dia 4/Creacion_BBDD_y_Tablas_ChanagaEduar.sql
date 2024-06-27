@@ -96,6 +96,16 @@ CREATE TABLE Cliente_Log (
     fecha_modificacion TIMESTAMP
 );
 
-
+-- Tabla para el Bk de cliente
+create table if not exists cliente_backup (
+id INT AUTO_INCREMENT PRIMARY KEY not null,
+    cedula VARCHAR(20) UNIQUE NOT NULL,
+    nombres VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(50) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
+    ciudad_residencia VARCHAR(50) NOT NULL,
+    celular VARCHAR(15),
+    correo_electronico VARCHAR(50)
+) engine=InnoDB	default charset=utf8mb4;
 
 -- Desarrollado por: Eduar Damian Chanaga Gonzalez / ID: 1095581647
